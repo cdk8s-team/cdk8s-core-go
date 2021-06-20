@@ -1,11 +1,6 @@
-## My Project
+## cdk8s-core-go
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+Go bindings for [cdk8s-core](https://github.com/cdk8s-team/cdk8s-core)
 
 ## Security
 
