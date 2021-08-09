@@ -421,6 +421,7 @@ type ApiObjectProps struct {
 type App interface {
 	constructs.Construct
 	Outdir() *string
+	YamlOutputType() YamlOutputType
 	OnPrepare()
 	OnSynthesize(session constructs.ISynthesisSession)
 	OnValidate() *[]*string
@@ -438,6 +439,16 @@ func (j *jsiiProxy_App) Outdir() *string {
 	_jsii_.Get(
 		j,
 		"outdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_App) YamlOutputType() YamlOutputType {
+	var returns YamlOutputType
+	_jsii_.Get(
+		j,
+		"yamlOutputType",
 		&returns,
 	)
 	return returns
@@ -545,6 +556,8 @@ func (a *jsiiProxy_App) ToString() *string {
 type AppProps struct {
 	// The directory to output Kubernetes manifests.
 	Outdir *string `json:"outdir"`
+	// How to divide the YAML output into files.
+	YamlOutputType YamlOutputType `json:"yamlOutputType"`
 }
 
 type Chart interface {
@@ -1964,7 +1977,7 @@ type jsiiProxy_Testing struct {
 }
 
 // Returns an app for testing with the following properties: - Output directory is a temp dir.
-func Testing_App() App {
+func Testing_App(props *AppProps) App {
 	_init_.Initialize()
 
 	var returns App
@@ -1972,7 +1985,7 @@ func Testing_App() App {
 	_jsii_.StaticInvoke(
 		"cdk8s.Testing",
 		"app",
-		nil, // no parameters
+		[]interface{}{props},
 		&returns,
 	)
 
@@ -2090,4 +2103,13 @@ func Yaml_Tmp(docs *[]interface{}) *string {
 
 	return returns
 }
+
+// The method to divide YAML output into files.
+type YamlOutputType string
+
+const (
+	YamlOutputType_FILE_PER_APP YamlOutputType = "FILE_PER_APP"
+	YamlOutputType_FILE_PER_CHART YamlOutputType = "FILE_PER_CHART"
+	YamlOutputType_FILE_PER_RESOURCE YamlOutputType = "FILE_PER_RESOURCE"
+)
 

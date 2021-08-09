@@ -65,6 +65,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "outdir", GoGetter: "Outdir"},
 			_jsii_.MemberMethod{JsiiMethod: "synth", GoMethod: "Synth"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberProperty{JsiiProperty: "yamlOutputType", GoGetter: "YamlOutputType"},
 		},
 		func() interface{} {
 			j := jsiiProxy_App{}
@@ -271,6 +272,15 @@ func init() {
 		nil, // no members
 		func() interface{} {
 			return &jsiiProxy_Yaml{}
+		},
+	)
+	_jsii_.RegisterEnum(
+		"cdk8s.YamlOutputType",
+		reflect.TypeOf((*YamlOutputType)(nil)).Elem(),
+		map[string]interface{}{
+			"FILE_PER_APP": YamlOutputType_FILE_PER_APP,
+			"FILE_PER_CHART": YamlOutputType_FILE_PER_CHART,
+			"FILE_PER_RESOURCE": YamlOutputType_FILE_PER_RESOURCE,
 		},
 	)
 }
