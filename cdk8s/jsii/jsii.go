@@ -12,7 +12,7 @@ import (
 	constructs "github.com/aws/constructs-go/constructs/v3/jsii"
 )
 
-//go:embed cdk8s-1.0.0-beta.47.tgz
+//go:embed cdk8s-1.0.0-beta.48.tgz
 var tarball []byte
 
 // Initialize loads the necessary packages in the @jsii/kernel to support the enclosing module.
@@ -22,5 +22,5 @@ func Initialize() {
 	constructs.Initialize()
 
 	// Load this library into the kernel
-	_jsii_.Load("cdk8s", "1.0.0-beta.47", tarball)
+	_jsii_.Load("cdk8s", "1.0.0-beta.48", tarball)
 }
