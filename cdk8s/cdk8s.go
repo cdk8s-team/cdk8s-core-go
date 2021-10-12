@@ -260,6 +260,24 @@ type ApiObjectMetadata struct {
 	// See: http://kubernetes.io/docs/user-guide/annotations
 	//
 	Annotations *map[string]*string `json:"annotations"`
+	// Namespaced keys that tell Kubernetes to wait until specific conditions are met before it fully deletes resources marked for deletion.
+	//
+	// Must be empty before the object is deleted from the registry. Each entry is
+	// an identifier for the responsible component that will remove the entry from
+	// the list. If the deletionTimestamp of the object is non-nil, entries in
+	// this list can only be removed. Finalizers may be processed and removed in
+	// any order.  Order is NOT enforced because it introduces significant risk of
+	// stuck finalizers. finalizers is a shared field, any actor with permission
+	// can reorder it. If the finalizer list is processed in order, then this can
+	// lead to a situation in which the component responsible for the first
+	// finalizer in the list is waiting for a signal (field value, external
+	// system, or other) produced by a component responsible for a finalizer later
+	// in the list, resulting in a deadlock. Without enforced ordering finalizers
+	// are free to order amongst themselves and are not vulnerable to ordering
+	// changes in the list.
+	// See: https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/
+	//
+	Finalizers *[]*string `json:"finalizers"`
 	// Map of string keys and values that can be used to organize and categorize (scope and select) objects.
 	//
 	// May match selectors of replication controllers and services.
@@ -286,6 +304,23 @@ type ApiObjectMetadata struct {
 	// An empty namespace is equivalent to the "default" namespace, but "default" is the canonical representation.
 	// Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty. Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces
 	Namespace *string `json:"namespace"`
+	// List of objects depended by this object.
+	//
+	// If ALL objects in the list have
+	// been deleted, this object will be garbage collected. If this object is
+	// managed by a controller, then an entry in this list will point to this
+	// controller, with the controller field set to true. There cannot be more
+	// than one managing controller.
+	//
+	// Kubernetes sets the value of this field automatically for objects that are
+	// dependents of other objects like ReplicaSets, DaemonSets, Deployments, Jobs
+	// and CronJobs, and ReplicationControllers. You can also configure these
+	// relationships manually by changing the value of this field. However, you
+	// usually don't need to and can allow Kubernetes to automatically manage the
+	// relationships.
+	// See: https://kubernetes.io/docs/concepts/overview/working-with-objects/owners-dependents/
+	//
+	OwnerReferences *[]*OwnerReference `json:"ownerReferences"`
 }
 
 // Object metadata.
@@ -294,7 +329,9 @@ type ApiObjectMetadataDefinition interface {
 	Namespace() *string
 	Add(key *string, value interface{})
 	AddAnnotation(key *string, value *string)
+	AddFinalizers(finalizers ...*string)
 	AddLabel(key *string, value *string)
+	AddOwnerReference(owner *OwnerReference)
 	GetLabel(key *string) *string
 	ToJson() interface{}
 }
@@ -367,12 +404,35 @@ func (a *jsiiProxy_ApiObjectMetadataDefinition) AddAnnotation(key *string, value
 	)
 }
 
+// Add one or more finalizers.
+func (a *jsiiProxy_ApiObjectMetadataDefinition) AddFinalizers(finalizers ...*string) {
+	args := []interface{}{}
+	for _, a := range finalizers {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		a,
+		"addFinalizers",
+		args,
+	)
+}
+
 // Add a label.
 func (a *jsiiProxy_ApiObjectMetadataDefinition) AddLabel(key *string, value *string) {
 	_jsii_.InvokeVoid(
 		a,
 		"addLabel",
 		[]interface{}{key, value},
+	)
+}
+
+// Add an owner.
+func (a *jsiiProxy_ApiObjectMetadataDefinition) AddOwnerReference(owner *OwnerReference) {
+	_jsii_.InvokeVoid(
+		a,
+		"addOwnerReference",
+		[]interface{}{owner},
 	)
 }
 
@@ -1771,6 +1831,35 @@ func Names_ToLabelValue(scope constructs.Construct, options *NameOptions) *strin
 	)
 
 	return returns
+}
+
+// OwnerReference contains enough information to let you identify an owning object.
+//
+// An owning object must be in the same namespace as the dependent, or
+// be cluster-scoped, so there is no namespace field.
+type OwnerReference struct {
+	// API version of the referent.
+	ApiVersion *string `json:"apiVersion"`
+	// Kind of the referent.
+	// See: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	//
+	Kind *string `json:"kind"`
+	// Name of the referent.
+	// See: http://kubernetes.io/docs/user-guide/identifiers#names
+	//
+	Name *string `json:"name"`
+	// UID of the referent.
+	// See: http://kubernetes.io/docs/user-guide/identifiers#uids
+	//
+	Uid *string `json:"uid"`
+	// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed.
+	//
+	// Defaults to false. To set this field, a user needs "delete"
+	// permission of the owner, otherwise 422 (Unprocessable Entity) will be
+	// returned.
+	BlockOwnerDeletion *bool `json:"blockOwnerDeletion"`
+	// If true, this reference points to the managing controller.
+	Controller *bool `json:"controller"`
 }
 
 // Represents the amount of digital storage.

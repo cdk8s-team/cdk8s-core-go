@@ -41,7 +41,9 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "add", GoMethod: "Add"},
 			_jsii_.MemberMethod{JsiiMethod: "addAnnotation", GoMethod: "AddAnnotation"},
+			_jsii_.MemberMethod{JsiiMethod: "addFinalizers", GoMethod: "AddFinalizers"},
 			_jsii_.MemberMethod{JsiiMethod: "addLabel", GoMethod: "AddLabel"},
+			_jsii_.MemberMethod{JsiiMethod: "addOwnerReference", GoMethod: "AddOwnerReference"},
 			_jsii_.MemberMethod{JsiiMethod: "getLabel", GoMethod: "GetLabel"},
 			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
 			_jsii_.MemberProperty{JsiiProperty: "namespace", GoGetter: "Namespace"},
@@ -226,6 +228,10 @@ func init() {
 		func() interface{} {
 			return &jsiiProxy_Names{}
 		},
+	)
+	_jsii_.RegisterStruct(
+		"cdk8s.OwnerReference",
+		reflect.TypeOf((*OwnerReference)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"cdk8s.Size",
