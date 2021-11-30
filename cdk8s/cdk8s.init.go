@@ -61,11 +61,13 @@ func init() {
 		"cdk8s.App",
 		reflect.TypeOf((*App)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "charts", GoGetter: "Charts"},
 			_jsii_.MemberMethod{JsiiMethod: "onPrepare", GoMethod: "OnPrepare"},
 			_jsii_.MemberMethod{JsiiMethod: "onSynthesize", GoMethod: "OnSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "onValidate", GoMethod: "OnValidate"},
 			_jsii_.MemberProperty{JsiiProperty: "outdir", GoGetter: "Outdir"},
 			_jsii_.MemberMethod{JsiiMethod: "synth", GoMethod: "Synth"},
+			_jsii_.MemberMethod{JsiiMethod: "synthYaml", GoMethod: "SynthYaml"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberProperty{JsiiProperty: "yamlOutputType", GoGetter: "YamlOutputType"},
 		},

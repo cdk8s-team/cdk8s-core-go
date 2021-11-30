@@ -480,18 +480,30 @@ type ApiObjectProps struct {
 // Represents a cdk8s application.
 type App interface {
 	constructs.Construct
+	Charts() *[]Chart
 	Outdir() *string
 	YamlOutputType() YamlOutputType
 	OnPrepare()
 	OnSynthesize(session constructs.ISynthesisSession)
 	OnValidate() *[]*string
 	Synth()
+	SynthYaml() interface{}
 	ToString() *string
 }
 
 // The jsii proxy struct for App
 type jsiiProxy_App struct {
 	internal.Type__constructsConstruct
+}
+
+func (j *jsiiProxy_App) Charts() *[]Chart {
+	var returns *[]Chart
+	_jsii_.Get(
+		j,
+		"charts",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_App) Outdir() *string {
@@ -597,6 +609,22 @@ func (a *jsiiProxy_App) Synth() {
 		"synth",
 		nil, // no parameters
 	)
+}
+
+// Synthesizes the app into a YAML string.
+//
+// Returns: A string with all YAML objects across all charts in this app.
+func (a *jsiiProxy_App) SynthYaml() interface{} {
+	var returns interface{}
+
+	_jsii_.Invoke(
+		a,
+		"synthYaml",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 // Returns a string representation of this construct.
@@ -2126,6 +2154,24 @@ type Yaml interface {
 // The jsii proxy struct for Yaml
 type jsiiProxy_Yaml struct {
 	_ byte // padding
+}
+
+// Formats the yaml objects into a single string.
+//
+// Returns: The formatted string
+func Yaml_FormatObjects(docs *[]interface{}) *string {
+	_init_.Initialize()
+
+	var returns *string
+
+	_jsii_.StaticInvoke(
+		"cdk8s.Yaml",
+		"formatObjects",
+		[]interface{}{docs},
+		&returns,
+	)
+
+	return returns
 }
 
 // Downloads a set of YAML documents (k8s manifest for example) from a URL or a file and returns them as javascript objects.
