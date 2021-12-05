@@ -2156,9 +2156,7 @@ type jsiiProxy_Yaml struct {
 	_ byte // padding
 }
 
-// Formats the yaml objects into a single string.
-//
-// Returns: The formatted string
+// Deprecated: use `stringify(doc[, doc, ...])`
 func Yaml_FormatObjects(docs *[]interface{}) *string {
 	_init_.Initialize()
 
@@ -2205,16 +2203,26 @@ func Yaml_Save(filePath *string, docs *[]interface{}) {
 	)
 }
 
-// Stringify a document into yaml.
-func Yaml_Stringify(doc interface{}) *string {
+// Stringify a document (or multiple documents) into YAML.
+//
+// We convert undefined values to null, but ignore any documents that are
+// undefined.
+//
+// Returns: a YAML string. Multiple docs are separated by `---`.
+func Yaml_Stringify(docs ...interface{}) *string {
 	_init_.Initialize()
+
+	args := []interface{}{}
+	for _, a := range docs {
+		args = append(args, a)
+	}
 
 	var returns *string
 
 	_jsii_.StaticInvoke(
 		"cdk8s.Yaml",
 		"stringify",
-		[]interface{}{doc},
+		args,
 		&returns,
 	)
 
