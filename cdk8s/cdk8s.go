@@ -3,10 +3,10 @@ package cdk8s
 
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
-	_init_ "github.com/cdk8s-team/cdk8s-core-go/cdk8s/v2/jsii"
+	_init_ "github.com/cdk8s-team/cdk8s-core-go/cdk8s/jsii"
 
-	"github.com/aws/constructs-go/constructs/v10"
-	"github.com/cdk8s-team/cdk8s-core-go/cdk8s/v2/internal"
+	"github.com/aws/constructs-go/constructs/v3"
+	"github.com/cdk8s-team/cdk8s-core-go/cdk8s/internal"
 )
 
 type ApiObject interface {
@@ -17,9 +17,11 @@ type ApiObject interface {
 	Kind() *string
 	Metadata() ApiObjectMetadataDefinition
 	Name() *string
-	Node() constructs.Node
 	AddDependency(dependencies ...constructs.IConstruct)
 	AddJsonPatch(ops ...JsonPatch)
+	OnPrepare()
+	OnSynthesize(session constructs.ISynthesisSession)
+	OnValidate() *[]*string
 	ToJson() interface{}
 	ToString() *string
 }
@@ -89,16 +91,6 @@ func (j *jsiiProxy_ApiObject) Name() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ApiObject) Node() constructs.Node {
-	var returns constructs.Node
-	_jsii_.Get(
-		j,
-		"node",
-		&returns,
-	)
-	return returns
-}
-
 
 // Defines an API object.
 func NewApiObject(scope constructs.Construct, id *string, props *ApiObjectProps) ApiObject {
@@ -124,25 +116,6 @@ func NewApiObject_Override(a ApiObject, scope constructs.Construct, id *string, 
 		[]interface{}{scope, id, props},
 		a,
 	)
-}
-
-// Checks if `x` is a construct.
-//
-// Returns: true if `x` is an object created from a class which extends `Construct`.
-// Deprecated: use `x instanceof Construct` instead
-func ApiObject_IsConstruct(x interface{}) *bool {
-	_init_.Initialize()
-
-	var returns *bool
-
-	_jsii_.StaticInvoke(
-		"cdk8s.ApiObject",
-		"isConstruct",
-		[]interface{}{x},
-		&returns,
-	)
-
-	return returns
 }
 
 // Returns the `ApiObject` named `Resource` which is a child of the given construct.
@@ -196,6 +169,55 @@ func (a *jsiiProxy_ApiObject) AddJsonPatch(ops ...JsonPatch) {
 		"addJsonPatch",
 		args,
 	)
+}
+
+// Perform final modifications before synthesis.
+//
+// This method can be implemented by derived constructs in order to perform
+// final changes before synthesis. prepare() will be called after child
+// constructs have been prepared.
+//
+// This is an advanced framework feature. Only use this if you
+// understand the implications.
+func (a *jsiiProxy_ApiObject) OnPrepare() {
+	_jsii_.InvokeVoid(
+		a,
+		"onPrepare",
+		nil, // no parameters
+	)
+}
+
+// Allows this construct to emit artifacts into the cloud assembly during synthesis.
+//
+// This method is usually implemented by framework-level constructs such as `Stack` and `Asset`
+// as they participate in synthesizing the cloud assembly.
+func (a *jsiiProxy_ApiObject) OnSynthesize(session constructs.ISynthesisSession) {
+	_jsii_.InvokeVoid(
+		a,
+		"onSynthesize",
+		[]interface{}{session},
+	)
+}
+
+// Validate the current construct.
+//
+// This method can be implemented by derived constructs in order to perform
+// validation logic. It is called on all constructs before synthesis.
+//
+// Returns: An array of validation error messages, or an empty array if there the construct is valid.
+// Deprecated: use `Node.addValidation()` to subscribe validation functions on this construct
+// instead of overriding this method.
+func (a *jsiiProxy_ApiObject) OnValidate() *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		a,
+		"onValidate",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 // Renders the object to Kubernetes JSON.
@@ -459,9 +481,11 @@ type ApiObjectProps struct {
 type App interface {
 	constructs.Construct
 	Charts() *[]Chart
-	Node() constructs.Node
 	Outdir() *string
 	YamlOutputType() YamlOutputType
+	OnPrepare()
+	OnSynthesize(session constructs.ISynthesisSession)
+	OnValidate() *[]*string
 	Synth()
 	SynthYaml() interface{}
 	ToString() *string
@@ -477,16 +501,6 @@ func (j *jsiiProxy_App) Charts() *[]Chart {
 	_jsii_.Get(
 		j,
 		"charts",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_App) Node() constructs.Node {
-	var returns constructs.Node
-	_jsii_.Get(
-		j,
-		"node",
 		&returns,
 	)
 	return returns
@@ -539,19 +553,49 @@ func NewApp_Override(a App, props *AppProps) {
 	)
 }
 
-// Checks if `x` is a construct.
+// Perform final modifications before synthesis.
 //
-// Returns: true if `x` is an object created from a class which extends `Construct`.
-// Deprecated: use `x instanceof Construct` instead
-func App_IsConstruct(x interface{}) *bool {
-	_init_.Initialize()
+// This method can be implemented by derived constructs in order to perform
+// final changes before synthesis. prepare() will be called after child
+// constructs have been prepared.
+//
+// This is an advanced framework feature. Only use this if you
+// understand the implications.
+func (a *jsiiProxy_App) OnPrepare() {
+	_jsii_.InvokeVoid(
+		a,
+		"onPrepare",
+		nil, // no parameters
+	)
+}
 
-	var returns *bool
+// Allows this construct to emit artifacts into the cloud assembly during synthesis.
+//
+// This method is usually implemented by framework-level constructs such as `Stack` and `Asset`
+// as they participate in synthesizing the cloud assembly.
+func (a *jsiiProxy_App) OnSynthesize(session constructs.ISynthesisSession) {
+	_jsii_.InvokeVoid(
+		a,
+		"onSynthesize",
+		[]interface{}{session},
+	)
+}
 
-	_jsii_.StaticInvoke(
-		"cdk8s.App",
-		"isConstruct",
-		[]interface{}{x},
+// Validate the current construct.
+//
+// This method can be implemented by derived constructs in order to perform
+// validation logic. It is called on all constructs before synthesis.
+//
+// Returns: An array of validation error messages, or an empty array if there the construct is valid.
+// Deprecated: use `Node.addValidation()` to subscribe validation functions on this construct
+// instead of overriding this method.
+func (a *jsiiProxy_App) OnValidate() *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		a,
+		"onValidate",
+		nil, // no parameters
 		&returns,
 	)
 
@@ -608,9 +652,11 @@ type Chart interface {
 	constructs.Construct
 	Labels() *map[string]*string
 	Namespace() *string
-	Node() constructs.Node
 	AddDependency(dependencies ...constructs.IConstruct)
 	GenerateObjectName(apiObject ApiObject) *string
+	OnPrepare()
+	OnSynthesize(session constructs.ISynthesisSession)
+	OnValidate() *[]*string
 	ToJson() *[]interface{}
 	ToString() *string
 }
@@ -640,16 +686,6 @@ func (j *jsiiProxy_Chart) Namespace() *string {
 	return returns
 }
 
-func (j *jsiiProxy_Chart) Node() constructs.Node {
-	var returns constructs.Node
-	_jsii_.Get(
-		j,
-		"node",
-		&returns,
-	)
-	return returns
-}
-
 
 func NewChart(scope constructs.Construct, id *string, props *ChartProps) Chart {
 	_init_.Initialize()
@@ -673,25 +709,6 @@ func NewChart_Override(c Chart, scope constructs.Construct, id *string, props *C
 		[]interface{}{scope, id, props},
 		c,
 	)
-}
-
-// Checks if `x` is a construct.
-//
-// Returns: true if `x` is an object created from a class which extends `Construct`.
-// Deprecated: use `x instanceof Construct` instead
-func Chart_IsConstruct(x interface{}) *bool {
-	_init_.Initialize()
-
-	var returns *bool
-
-	_jsii_.StaticInvoke(
-		"cdk8s.Chart",
-		"isConstruct",
-		[]interface{}{x},
-		&returns,
-	)
-
-	return returns
 }
 
 // Finds the chart in which a node is defined.
@@ -749,6 +766,55 @@ func (c *jsiiProxy_Chart) GenerateObjectName(apiObject ApiObject) *string {
 		c,
 		"generateObjectName",
 		[]interface{}{apiObject},
+		&returns,
+	)
+
+	return returns
+}
+
+// Perform final modifications before synthesis.
+//
+// This method can be implemented by derived constructs in order to perform
+// final changes before synthesis. prepare() will be called after child
+// constructs have been prepared.
+//
+// This is an advanced framework feature. Only use this if you
+// understand the implications.
+func (c *jsiiProxy_Chart) OnPrepare() {
+	_jsii_.InvokeVoid(
+		c,
+		"onPrepare",
+		nil, // no parameters
+	)
+}
+
+// Allows this construct to emit artifacts into the cloud assembly during synthesis.
+//
+// This method is usually implemented by framework-level constructs such as `Stack` and `Asset`
+// as they participate in synthesizing the cloud assembly.
+func (c *jsiiProxy_Chart) OnSynthesize(session constructs.ISynthesisSession) {
+	_jsii_.InvokeVoid(
+		c,
+		"onSynthesize",
+		[]interface{}{session},
+	)
+}
+
+// Validate the current construct.
+//
+// This method can be implemented by derived constructs in order to perform
+// validation logic. It is called on all constructs before synthesis.
+//
+// Returns: An array of validation error messages, or an empty array if there the construct is valid.
+// Deprecated: use `Node.addValidation()` to subscribe validation functions on this construct
+// instead of overriding this method.
+func (c *jsiiProxy_Chart) OnValidate() *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		c,
+		"onValidate",
+		nil, // no parameters
 		&returns,
 	)
 
@@ -1217,8 +1283,10 @@ type GroupVersionKind struct {
 type Helm interface {
 	Include
 	ApiObjects() *[]ApiObject
-	Node() constructs.Node
 	ReleaseName() *string
+	OnPrepare()
+	OnSynthesize(session constructs.ISynthesisSession)
+	OnValidate() *[]*string
 	ToString() *string
 }
 
@@ -1232,16 +1300,6 @@ func (j *jsiiProxy_Helm) ApiObjects() *[]ApiObject {
 	_jsii_.Get(
 		j,
 		"apiObjects",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_Helm) Node() constructs.Node {
-	var returns constructs.Node
-	_jsii_.Get(
-		j,
-		"node",
 		&returns,
 	)
 	return returns
@@ -1282,19 +1340,49 @@ func NewHelm_Override(h Helm, scope constructs.Construct, id *string, props *Hel
 	)
 }
 
-// Checks if `x` is a construct.
+// Perform final modifications before synthesis.
 //
-// Returns: true if `x` is an object created from a class which extends `Construct`.
-// Deprecated: use `x instanceof Construct` instead
-func Helm_IsConstruct(x interface{}) *bool {
-	_init_.Initialize()
+// This method can be implemented by derived constructs in order to perform
+// final changes before synthesis. prepare() will be called after child
+// constructs have been prepared.
+//
+// This is an advanced framework feature. Only use this if you
+// understand the implications.
+func (h *jsiiProxy_Helm) OnPrepare() {
+	_jsii_.InvokeVoid(
+		h,
+		"onPrepare",
+		nil, // no parameters
+	)
+}
 
-	var returns *bool
+// Allows this construct to emit artifacts into the cloud assembly during synthesis.
+//
+// This method is usually implemented by framework-level constructs such as `Stack` and `Asset`
+// as they participate in synthesizing the cloud assembly.
+func (h *jsiiProxy_Helm) OnSynthesize(session constructs.ISynthesisSession) {
+	_jsii_.InvokeVoid(
+		h,
+		"onSynthesize",
+		[]interface{}{session},
+	)
+}
 
-	_jsii_.StaticInvoke(
-		"cdk8s.Helm",
-		"isConstruct",
-		[]interface{}{x},
+// Validate the current construct.
+//
+// This method can be implemented by derived constructs in order to perform
+// validation logic. It is called on all constructs before synthesis.
+//
+// Returns: An array of validation error messages, or an empty array if there the construct is valid.
+// Deprecated: use `Node.addValidation()` to subscribe validation functions on this construct
+// instead of overriding this method.
+func (h *jsiiProxy_Helm) OnValidate() *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		h,
+		"onValidate",
+		nil, // no parameters
 		&returns,
 	)
 
@@ -1365,7 +1453,9 @@ func (i *jsiiProxy_IAnyProducer) Produce() interface{} {
 type Include interface {
 	constructs.Construct
 	ApiObjects() *[]ApiObject
-	Node() constructs.Node
+	OnPrepare()
+	OnSynthesize(session constructs.ISynthesisSession)
+	OnValidate() *[]*string
 	ToString() *string
 }
 
@@ -1379,16 +1469,6 @@ func (j *jsiiProxy_Include) ApiObjects() *[]ApiObject {
 	_jsii_.Get(
 		j,
 		"apiObjects",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_Include) Node() constructs.Node {
-	var returns constructs.Node
-	_jsii_.Get(
-		j,
-		"node",
 		&returns,
 	)
 	return returns
@@ -1419,19 +1499,49 @@ func NewInclude_Override(i Include, scope constructs.Construct, id *string, prop
 	)
 }
 
-// Checks if `x` is a construct.
+// Perform final modifications before synthesis.
 //
-// Returns: true if `x` is an object created from a class which extends `Construct`.
-// Deprecated: use `x instanceof Construct` instead
-func Include_IsConstruct(x interface{}) *bool {
-	_init_.Initialize()
+// This method can be implemented by derived constructs in order to perform
+// final changes before synthesis. prepare() will be called after child
+// constructs have been prepared.
+//
+// This is an advanced framework feature. Only use this if you
+// understand the implications.
+func (i *jsiiProxy_Include) OnPrepare() {
+	_jsii_.InvokeVoid(
+		i,
+		"onPrepare",
+		nil, // no parameters
+	)
+}
 
-	var returns *bool
+// Allows this construct to emit artifacts into the cloud assembly during synthesis.
+//
+// This method is usually implemented by framework-level constructs such as `Stack` and `Asset`
+// as they participate in synthesizing the cloud assembly.
+func (i *jsiiProxy_Include) OnSynthesize(session constructs.ISynthesisSession) {
+	_jsii_.InvokeVoid(
+		i,
+		"onSynthesize",
+		[]interface{}{session},
+	)
+}
 
-	_jsii_.StaticInvoke(
-		"cdk8s.Include",
-		"isConstruct",
-		[]interface{}{x},
+// Validate the current construct.
+//
+// This method can be implemented by derived constructs in order to perform
+// validation logic. It is called on all constructs before synthesis.
+//
+// Returns: An array of validation error messages, or an empty array if there the construct is valid.
+// Deprecated: use `Node.addValidation()` to subscribe validation functions on this construct
+// instead of overriding this method.
+func (i *jsiiProxy_Include) OnValidate() *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		i,
+		"onValidate",
+		nil, // no parameters
 		&returns,
 	)
 
