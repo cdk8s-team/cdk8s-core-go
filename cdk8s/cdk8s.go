@@ -2144,5 +2144,6 @@ const (
 	YamlOutputType_FILE_PER_APP YamlOutputType = "FILE_PER_APP"
 	YamlOutputType_FILE_PER_CHART YamlOutputType = "FILE_PER_CHART"
 	YamlOutputType_FILE_PER_RESOURCE YamlOutputType = "FILE_PER_RESOURCE"
+	YamlOutputType_FOLDER_PER_CHART_FILE_PER_RESOURCE YamlOutputType = "FOLDER_PER_CHART_FILE_PER_RESOURCE"
 )
 
