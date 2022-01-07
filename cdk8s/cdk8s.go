@@ -237,7 +237,7 @@ type ApiObjectMetadata struct {
 	// preserved when modifying objects.
 	// See: http://kubernetes.io/docs/user-guide/annotations
 	//
-	Annotations *map[string]*string `json:"annotations"`
+	Annotations *map[string]*string `json:"annotations" yaml:"annotations"`
 	// Namespaced keys that tell Kubernetes to wait until specific conditions are met before it fully deletes resources marked for deletion.
 	//
 	// Must be empty before the object is deleted from the registry. Each entry is
@@ -255,13 +255,13 @@ type ApiObjectMetadata struct {
 	// changes in the list.
 	// See: https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/
 	//
-	Finalizers *[]*string `json:"finalizers"`
+	Finalizers *[]*string `json:"finalizers" yaml:"finalizers"`
 	// Map of string keys and values that can be used to organize and categorize (scope and select) objects.
 	//
 	// May match selectors of replication controllers and services.
 	// See: http://kubernetes.io/docs/user-guide/labels
 	//
-	Labels *map[string]*string `json:"labels"`
+	Labels *map[string]*string `json:"labels" yaml:"labels"`
 	// The unique, namespace-global, name of this object inside the Kubernetes cluster.
 	//
 	// Normally, you shouldn't specify names for objects and let the CDK generate
@@ -276,12 +276,12 @@ type ApiObjectMetadata struct {
 	// composability of your construct because it won't be possible to include
 	// more than one instance in any app. Therefore it is highly recommended to
 	// leave this unspecified.
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// Namespace defines the space within each name must be unique.
 	//
 	// An empty namespace is equivalent to the "default" namespace, but "default" is the canonical representation.
 	// Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty. Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces
-	Namespace *string `json:"namespace"`
+	Namespace *string `json:"namespace" yaml:"namespace"`
 	// List of objects depended by this object.
 	//
 	// If ALL objects in the list have
@@ -298,7 +298,7 @@ type ApiObjectMetadata struct {
 	// relationships.
 	// See: https://kubernetes.io/docs/concepts/overview/working-with-objects/owners-dependents/
 	//
-	OwnerReferences *[]*OwnerReference `json:"ownerReferences"`
+	OwnerReferences *[]*OwnerReference `json:"ownerReferences" yaml:"ownerReferences"`
 }
 
 // Object metadata.
@@ -445,14 +445,14 @@ func (a *jsiiProxy_ApiObjectMetadataDefinition) ToJson() interface{} {
 // Options for defining API objects.
 type ApiObjectProps struct {
 	// API version.
-	ApiVersion *string `json:"apiVersion"`
+	ApiVersion *string `json:"apiVersion" yaml:"apiVersion"`
 	// Resource kind.
-	Kind *string `json:"kind"`
+	Kind *string `json:"kind" yaml:"kind"`
 	// Object metadata.
 	//
 	// If `name` is not specified, an app-unique name will be allocated by the
 	// framework based on the path of the construct within thes construct tree.
-	Metadata *ApiObjectMetadata `json:"metadata"`
+	Metadata *ApiObjectMetadata `json:"metadata" yaml:"metadata"`
 }
 
 // Represents a cdk8s application.
@@ -599,9 +599,9 @@ func (a *jsiiProxy_App) ToString() *string {
 
 type AppProps struct {
 	// The directory to output Kubernetes manifests.
-	Outdir *string `json:"outdir"`
+	Outdir *string `json:"outdir" yaml:"outdir"`
 	// How to divide the YAML output into files.
-	YamlOutputType YamlOutputType `json:"yamlOutputType"`
+	YamlOutputType YamlOutputType `json:"yamlOutputType" yaml:"yamlOutputType"`
 }
 
 type Chart interface {
@@ -787,12 +787,12 @@ func (c *jsiiProxy_Chart) ToString() *string {
 
 type ChartProps struct {
 	// Labels to apply to all resources in this chart.
-	Labels *map[string]*string `json:"labels"`
+	Labels *map[string]*string `json:"labels" yaml:"labels"`
 	// The default namespace for all objects defined in this chart (directly or indirectly).
 	//
 	// This namespace will only apply to objects that don't have a
 	// `namespace` explicitly defined for them.
-	Namespace *string `json:"namespace"`
+	Namespace *string `json:"namespace" yaml:"namespace"`
 }
 
 // Represents the dependency graph for a given Node.
@@ -1206,9 +1206,9 @@ func (d *jsiiProxy_Duration) ToSeconds(opts *TimeConversionOptions) *float64 {
 
 type GroupVersionKind struct {
 	// The object's API version (e.g. `authorization.k8s.io/v1`).
-	ApiVersion *string `json:"apiVersion"`
+	ApiVersion *string `json:"apiVersion" yaml:"apiVersion"`
 	// The object kind.
-	Kind *string `json:"kind"`
+	Kind *string `json:"kind" yaml:"kind"`
 }
 
 // Represents a Helm deployment.
@@ -1323,17 +1323,17 @@ type HelmProps struct {
 	//
 	// TODO: EXAMPLE
 	//
-	Chart *string `json:"chart"`
+	Chart *string `json:"chart" yaml:"chart"`
 	// The local helm executable to use in order to create the manifest the chart.
-	HelmExecutable *string `json:"helmExecutable"`
+	HelmExecutable *string `json:"helmExecutable" yaml:"helmExecutable"`
 	// Additional flags to add to the `helm` execution.
-	HelmFlags *[]*string `json:"helmFlags"`
+	HelmFlags *[]*string `json:"helmFlags" yaml:"helmFlags"`
 	// The release name.
 	// See: https://helm.sh/docs/intro/using_helm/#three-big-concepts
 	//
-	ReleaseName *string `json:"releaseName"`
+	ReleaseName *string `json:"releaseName" yaml:"releaseName"`
 	// Values to pass to the chart.
-	Values *map[string]interface{} `json:"values"`
+	Values *map[string]interface{} `json:"values" yaml:"values"`
 }
 
 type IAnyProducer interface {
@@ -1457,7 +1457,7 @@ type IncludeProps struct {
 	//
 	// TODO: EXAMPLE
 	//
-	Url *string `json:"url"`
+	Url *string `json:"url" yaml:"url"`
 }
 
 // Utility for applying RFC-6902 JSON-Patch to a document.
@@ -1669,13 +1669,13 @@ func (l *jsiiProxy_Lazy) Produce() interface{} {
 // Options for name generation.
 type NameOptions struct {
 	// Delimiter to use between components.
-	Delimiter *string `json:"delimiter"`
+	Delimiter *string `json:"delimiter" yaml:"delimiter"`
 	// Extra components to include in the name.
-	Extra *[]*string `json:"extra"`
+	Extra *[]*string `json:"extra" yaml:"extra"`
 	// Include a short hash as last part of the name.
-	IncludeHash *bool `json:"includeHash"`
+	IncludeHash *bool `json:"includeHash" yaml:"includeHash"`
 	// Maximum allowed length for the name.
-	MaxLen *float64 `json:"maxLen"`
+	MaxLen *float64 `json:"maxLen" yaml:"maxLen"`
 }
 
 // Utilities for generating unique and stable names.
@@ -1757,27 +1757,27 @@ func Names_ToLabelValue(scope constructs.Construct, options *NameOptions) *strin
 // be cluster-scoped, so there is no namespace field.
 type OwnerReference struct {
 	// API version of the referent.
-	ApiVersion *string `json:"apiVersion"`
+	ApiVersion *string `json:"apiVersion" yaml:"apiVersion"`
 	// Kind of the referent.
 	// See: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	//
-	Kind *string `json:"kind"`
+	Kind *string `json:"kind" yaml:"kind"`
 	// Name of the referent.
 	// See: http://kubernetes.io/docs/user-guide/identifiers#names
 	//
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// UID of the referent.
 	// See: http://kubernetes.io/docs/user-guide/identifiers#uids
 	//
-	Uid *string `json:"uid"`
+	Uid *string `json:"uid" yaml:"uid"`
 	// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed.
 	//
 	// Defaults to false. To set this field, a user needs "delete"
 	// permission of the owner, otherwise 422 (Unprocessable Entity) will be
 	// returned.
-	BlockOwnerDeletion *bool `json:"blockOwnerDeletion"`
+	BlockOwnerDeletion *bool `json:"blockOwnerDeletion" yaml:"blockOwnerDeletion"`
 	// If true, this reference points to the managing controller.
-	Controller *bool `json:"controller"`
+	Controller *bool `json:"controller" yaml:"controller"`
 }
 
 // Represents the amount of digital storage.
@@ -1962,7 +1962,7 @@ func (s *jsiiProxy_Size) ToTebibytes(opts *SizeConversionOptions) *float64 {
 // Options for how to convert time to a different unit.
 type SizeConversionOptions struct {
 	// How conversions should behave when it encounters a non-integer result.
-	Rounding SizeRoundingBehavior `json:"rounding"`
+	Rounding SizeRoundingBehavior `json:"rounding" yaml:"rounding"`
 }
 
 // Rounding behaviour when converting between units of `Size`.
@@ -2034,7 +2034,7 @@ func Testing_Synth(chart Chart) *[]interface{} {
 // Options for how to convert time to a different unit.
 type TimeConversionOptions struct {
 	// If `true`, conversions into a larger time unit (e.g. `Seconds` to `Minutes`) will fail if the result is not an integer.
-	Integral *bool `json:"integral"`
+	Integral *bool `json:"integral" yaml:"integral"`
 }
 
 // YAML utilities.
