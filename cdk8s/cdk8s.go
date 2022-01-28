@@ -461,6 +461,7 @@ type App interface {
 	Charts() *[]Chart
 	Node() constructs.Node
 	Outdir() *string
+	OutputFileExtension() *string
 	YamlOutputType() YamlOutputType
 	Synth()
 	SynthYaml() interface{}
@@ -497,6 +498,16 @@ func (j *jsiiProxy_App) Outdir() *string {
 	_jsii_.Get(
 		j,
 		"outdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_App) OutputFileExtension() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"outputFileExtension",
 		&returns,
 	)
 	return returns
@@ -600,6 +611,8 @@ func (a *jsiiProxy_App) ToString() *string {
 type AppProps struct {
 	// The directory to output Kubernetes manifests.
 	Outdir *string `json:"outdir" yaml:"outdir"`
+	// The file extension to use for rendered YAML files.
+	OutputFileExtension *string `json:"outputFileExtension" yaml:"outputFileExtension"`
 	// How to divide the YAML output into files.
 	YamlOutputType YamlOutputType `json:"yamlOutputType" yaml:"yamlOutputType"`
 }
