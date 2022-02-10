@@ -3,6 +3,6 @@ module github.com/cdk8s-team/cdk8s-core-go/cdk8s
 go 1.16
 
 require (
-	github.com/aws/jsii-runtime-go v1.52.1
-	github.com/aws/constructs-go/constructs/v3 v3.3.211
+	github.com/aws/jsii-runtime-go v1.53.0
+	github.com/aws/constructs-go/constructs/v3 v3.3.212
 )
