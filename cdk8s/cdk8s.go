@@ -794,6 +794,24 @@ func NewChart_Override(c Chart, scope constructs.Construct, id *string, props *C
 	)
 }
 
+// Return whether the given object is a Chart.
+//
+// We do attribute detection since we can't reliably use 'instanceof'.
+func Chart_IsChart(x interface{}) *bool {
+	_init_.Initialize()
+
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"cdk8s.Chart",
+		"isChart",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 // Finds the chart in which a node is defined.
 func Chart_Of(c constructs.IConstruct) Chart {
 	_init_.Initialize()
