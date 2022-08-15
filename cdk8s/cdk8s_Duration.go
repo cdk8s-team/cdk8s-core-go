@@ -39,6 +39,8 @@ type Duration interface {
 	//
 	// Returns: the value of this `Duration` expressed in Seconds.
 	ToSeconds(opts *TimeConversionOptions) *float64
+	// Return unit of Duration.
+	UnitLabel() *string
 }
 
 // The jsii proxy struct for Duration
@@ -241,6 +243,19 @@ func (d *jsiiProxy_Duration) ToSeconds(opts *TimeConversionOptions) *float64 {
 		d,
 		"toSeconds",
 		[]interface{}{opts},
+		&returns,
+	)
+
+	return returns
+}
+
+func (d *jsiiProxy_Duration) UnitLabel() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		d,
+		"unitLabel",
+		nil, // no parameters
 		&returns,
 	)
 

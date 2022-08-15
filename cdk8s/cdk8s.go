@@ -100,6 +100,10 @@ func init() {
 		"cdk8s.ChartProps",
 		reflect.TypeOf((*ChartProps)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"cdk8s.CronOptions",
+		reflect.TypeOf((*CronOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"cdk8s.DependencyGraph",
 		reflect.TypeOf((*DependencyGraph)(nil)).Elem(),
@@ -136,6 +140,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "toMilliseconds", GoMethod: "ToMilliseconds"},
 			_jsii_.MemberMethod{JsiiMethod: "toMinutes", GoMethod: "ToMinutes"},
 			_jsii_.MemberMethod{JsiiMethod: "toSeconds", GoMethod: "ToSeconds"},
+			_jsii_.MemberMethod{JsiiMethod: "unitLabel", GoMethod: "UnitLabel"},
 		},
 		func() interface{} {
 			return &jsiiProxy_Duration{}
@@ -225,6 +230,16 @@ func init() {
 	_jsii_.RegisterStruct(
 		"cdk8s.OwnerReference",
 		reflect.TypeOf((*OwnerReference)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"cdk8s.Schedule",
+		reflect.TypeOf((*Schedule)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "expressionString", GoGetter: "ExpressionString"},
+		},
+		func() interface{} {
+			return &jsiiProxy_Schedule{}
+		},
 	)
 	_jsii_.RegisterClass(
 		"cdk8s.Size",
