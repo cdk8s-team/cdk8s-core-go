@@ -5,7 +5,7 @@ package cdk8s
 // Options to configure a cron expression.
 //
 // All fields are strings so you can use complex expressions. Absence of
-// a field implies '*' or '?', whichever one is appropriate.
+// a field implies '*'.
 type CronOptions struct {
 	// The day of the month to run this rule at.
 	Day *string `field:"optional" json:"day" yaml:"day"`
@@ -17,7 +17,5 @@ type CronOptions struct {
 	Month *string `field:"optional" json:"month" yaml:"month"`
 	// The day of the week to run this rule at.
 	WeekDay *string `field:"optional" json:"weekDay" yaml:"weekDay"`
-	// The year to run this rule at.
-	Year *string `field:"optional" json:"year" yaml:"year"`
 }
 
