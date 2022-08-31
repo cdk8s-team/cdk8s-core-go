@@ -73,6 +73,9 @@ func (j *jsiiProxy_Helm) ReleaseName() *string {
 func NewHelm(scope constructs.Construct, id *string, props *HelmProps) Helm {
 	_init_.Initialize()
 
+	if err := validateNewHelmParameters(scope, id, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Helm{}
 
 	_jsii_.Create(
@@ -103,6 +106,9 @@ func (h *jsiiProxy_Helm) OnPrepare() {
 }
 
 func (h *jsiiProxy_Helm) OnSynthesize(session constructs.ISynthesisSession) {
+	if err := h.validateOnSynthesizeParameters(session); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		h,
 		"onSynthesize",

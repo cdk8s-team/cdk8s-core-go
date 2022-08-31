@@ -63,6 +63,9 @@ func (j *jsiiProxy_Include) ApiObjects() *[]ApiObject {
 func NewInclude(scope constructs.Construct, id *string, props *IncludeProps) Include {
 	_init_.Initialize()
 
+	if err := validateNewIncludeParameters(scope, id, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Include{}
 
 	_jsii_.Create(
@@ -93,6 +96,9 @@ func (i *jsiiProxy_Include) OnPrepare() {
 }
 
 func (i *jsiiProxy_Include) OnSynthesize(session constructs.ISynthesisSession) {
+	if err := i.validateOnSynthesizeParameters(session); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		i,
 		"onSynthesize",

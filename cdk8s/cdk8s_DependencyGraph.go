@@ -48,6 +48,9 @@ func (j *jsiiProxy_DependencyGraph) Root() DependencyVertex {
 func NewDependencyGraph(node constructs.Node) DependencyGraph {
 	_init_.Initialize()
 
+	if err := validateNewDependencyGraphParameters(node); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_DependencyGraph{}
 
 	_jsii_.Create(

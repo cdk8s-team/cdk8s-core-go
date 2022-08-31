@@ -91,6 +91,9 @@ func NewDependencyVertex_Override(d DependencyVertex, value constructs.IConstruc
 }
 
 func (d *jsiiProxy_DependencyVertex) AddChild(dep DependencyVertex) {
+	if err := d.validateAddChildParameters(dep); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		d,
 		"addChild",

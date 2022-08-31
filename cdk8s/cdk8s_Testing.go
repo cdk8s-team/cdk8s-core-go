@@ -19,6 +19,9 @@ type jsiiProxy_Testing struct {
 func Testing_App(props *AppProps) App {
 	_init_.Initialize()
 
+	if err := validateTesting_AppParameters(props); err != nil {
+		panic(err)
+	}
 	var returns App
 
 	_jsii_.StaticInvoke(
@@ -51,6 +54,9 @@ func Testing_Chart() Chart {
 func Testing_Synth(chart Chart) *[]interface{} {
 	_init_.Initialize()
 
+	if err := validateTesting_SynthParameters(chart); err != nil {
+		panic(err)
+	}
 	var returns *[]interface{}
 
 	_jsii_.StaticInvoke(

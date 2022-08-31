@@ -103,6 +103,9 @@ func (j *jsiiProxy_App) YamlOutputType() YamlOutputType {
 func NewApp(props *AppProps) App {
 	_init_.Initialize()
 
+	if err := validateNewAppParameters(props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_App{}
 
 	_jsii_.Create(
@@ -134,6 +137,9 @@ func (a *jsiiProxy_App) OnPrepare() {
 }
 
 func (a *jsiiProxy_App) OnSynthesize(session constructs.ISynthesisSession) {
+	if err := a.validateOnSynthesizeParameters(session); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"onSynthesize",

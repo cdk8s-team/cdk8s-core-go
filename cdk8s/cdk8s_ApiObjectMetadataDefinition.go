@@ -62,6 +62,9 @@ func (j *jsiiProxy_ApiObjectMetadataDefinition) Namespace() *string {
 func NewApiObjectMetadataDefinition(options *ApiObjectMetadata) ApiObjectMetadataDefinition {
 	_init_.Initialize()
 
+	if err := validateNewApiObjectMetadataDefinitionParameters(options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_ApiObjectMetadataDefinition{}
 
 	_jsii_.Create(
@@ -84,6 +87,9 @@ func NewApiObjectMetadataDefinition_Override(a ApiObjectMetadataDefinition, opti
 }
 
 func (a *jsiiProxy_ApiObjectMetadataDefinition) Add(key *string, value interface{}) {
+	if err := a.validateAddParameters(key, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"add",
@@ -92,6 +98,9 @@ func (a *jsiiProxy_ApiObjectMetadataDefinition) Add(key *string, value interface
 }
 
 func (a *jsiiProxy_ApiObjectMetadataDefinition) AddAnnotation(key *string, value *string) {
+	if err := a.validateAddAnnotationParameters(key, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addAnnotation",
@@ -113,6 +122,9 @@ func (a *jsiiProxy_ApiObjectMetadataDefinition) AddFinalizers(finalizers ...*str
 }
 
 func (a *jsiiProxy_ApiObjectMetadataDefinition) AddLabel(key *string, value *string) {
+	if err := a.validateAddLabelParameters(key, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addLabel",
@@ -121,6 +133,9 @@ func (a *jsiiProxy_ApiObjectMetadataDefinition) AddLabel(key *string, value *str
 }
 
 func (a *jsiiProxy_ApiObjectMetadataDefinition) AddOwnerReference(owner *OwnerReference) {
+	if err := a.validateAddOwnerReferenceParameters(owner); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addOwnerReference",
@@ -129,6 +144,9 @@ func (a *jsiiProxy_ApiObjectMetadataDefinition) AddOwnerReference(owner *OwnerRe
 }
 
 func (a *jsiiProxy_ApiObjectMetadataDefinition) GetLabel(key *string) *string {
+	if err := a.validateGetLabelParameters(key); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

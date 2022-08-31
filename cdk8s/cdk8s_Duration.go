@@ -54,6 +54,9 @@ type jsiiProxy_Duration struct {
 func Duration_Days(amount *float64) Duration {
 	_init_.Initialize()
 
+	if err := validateDuration_DaysParameters(amount); err != nil {
+		panic(err)
+	}
 	var returns Duration
 
 	_jsii_.StaticInvoke(
@@ -72,6 +75,9 @@ func Duration_Days(amount *float64) Duration {
 func Duration_Hours(amount *float64) Duration {
 	_init_.Initialize()
 
+	if err := validateDuration_HoursParameters(amount); err != nil {
+		panic(err)
+	}
 	var returns Duration
 
 	_jsii_.StaticInvoke(
@@ -90,6 +96,9 @@ func Duration_Hours(amount *float64) Duration {
 func Duration_Millis(amount *float64) Duration {
 	_init_.Initialize()
 
+	if err := validateDuration_MillisParameters(amount); err != nil {
+		panic(err)
+	}
 	var returns Duration
 
 	_jsii_.StaticInvoke(
@@ -108,6 +117,9 @@ func Duration_Millis(amount *float64) Duration {
 func Duration_Minutes(amount *float64) Duration {
 	_init_.Initialize()
 
+	if err := validateDuration_MinutesParameters(amount); err != nil {
+		panic(err)
+	}
 	var returns Duration
 
 	_jsii_.StaticInvoke(
@@ -128,6 +140,9 @@ func Duration_Minutes(amount *float64) Duration {
 func Duration_Parse(duration *string) Duration {
 	_init_.Initialize()
 
+	if err := validateDuration_ParseParameters(duration); err != nil {
+		panic(err)
+	}
 	var returns Duration
 
 	_jsii_.StaticInvoke(
@@ -146,6 +161,9 @@ func Duration_Parse(duration *string) Duration {
 func Duration_Seconds(amount *float64) Duration {
 	_init_.Initialize()
 
+	if err := validateDuration_SecondsParameters(amount); err != nil {
+		panic(err)
+	}
 	var returns Duration
 
 	_jsii_.StaticInvoke(
@@ -159,6 +177,9 @@ func Duration_Seconds(amount *float64) Duration {
 }
 
 func (d *jsiiProxy_Duration) ToDays(opts *TimeConversionOptions) *float64 {
+	if err := d.validateToDaysParameters(opts); err != nil {
+		panic(err)
+	}
 	var returns *float64
 
 	_jsii_.Invoke(
@@ -172,6 +193,9 @@ func (d *jsiiProxy_Duration) ToDays(opts *TimeConversionOptions) *float64 {
 }
 
 func (d *jsiiProxy_Duration) ToHours(opts *TimeConversionOptions) *float64 {
+	if err := d.validateToHoursParameters(opts); err != nil {
+		panic(err)
+	}
 	var returns *float64
 
 	_jsii_.Invoke(
@@ -211,6 +235,9 @@ func (d *jsiiProxy_Duration) ToIsoString() *string {
 }
 
 func (d *jsiiProxy_Duration) ToMilliseconds(opts *TimeConversionOptions) *float64 {
+	if err := d.validateToMillisecondsParameters(opts); err != nil {
+		panic(err)
+	}
 	var returns *float64
 
 	_jsii_.Invoke(
@@ -224,6 +251,9 @@ func (d *jsiiProxy_Duration) ToMilliseconds(opts *TimeConversionOptions) *float6
 }
 
 func (d *jsiiProxy_Duration) ToMinutes(opts *TimeConversionOptions) *float64 {
+	if err := d.validateToMinutesParameters(opts); err != nil {
+		panic(err)
+	}
 	var returns *float64
 
 	_jsii_.Invoke(
@@ -237,6 +267,9 @@ func (d *jsiiProxy_Duration) ToMinutes(opts *TimeConversionOptions) *float64 {
 }
 
 func (d *jsiiProxy_Duration) ToSeconds(opts *TimeConversionOptions) *float64 {
+	if err := d.validateToSecondsParameters(opts); err != nil {
+		panic(err)
+	}
 	var returns *float64
 
 	_jsii_.Invoke(

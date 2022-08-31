@@ -19,6 +19,9 @@ type jsiiProxy_Yaml struct {
 func Yaml_FormatObjects(docs *[]interface{}) *string {
 	_init_.Initialize()
 
+	if err := validateYaml_FormatObjectsParameters(docs); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.StaticInvoke(
@@ -39,6 +42,9 @@ func Yaml_FormatObjects(docs *[]interface{}) *string {
 func Yaml_Load(urlOrFile *string) *[]interface{} {
 	_init_.Initialize()
 
+	if err := validateYaml_LoadParameters(urlOrFile); err != nil {
+		panic(err)
+	}
 	var returns *[]interface{}
 
 	_jsii_.StaticInvoke(
@@ -55,6 +61,9 @@ func Yaml_Load(urlOrFile *string) *[]interface{} {
 func Yaml_Save(filePath *string, docs *[]interface{}) {
 	_init_.Initialize()
 
+	if err := validateYaml_SaveParameters(filePath, docs); err != nil {
+		panic(err)
+	}
 	_jsii_.StaticInvokeVoid(
 		"cdk8s.Yaml",
 		"save",
@@ -94,6 +103,9 @@ func Yaml_Stringify(docs ...interface{}) *string {
 func Yaml_Tmp(docs *[]interface{}) *string {
 	_init_.Initialize()
 
+	if err := validateYaml_TmpParameters(docs); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.StaticInvoke(
