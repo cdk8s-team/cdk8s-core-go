@@ -129,6 +129,9 @@ func (j *jsiiProxy_ApiObject) Node() constructs.Node {
 func NewApiObject(scope constructs.Construct, id *string, props *ApiObjectProps) ApiObject {
 	_init_.Initialize()
 
+	if err := validateNewApiObjectParameters(scope, id, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_ApiObject{}
 
 	_jsii_.Create(
@@ -158,6 +161,9 @@ func NewApiObject_Override(a ApiObject, scope constructs.Construct, id *string, 
 func ApiObject_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateApiObject_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
@@ -178,6 +184,9 @@ func ApiObject_IsConstruct(x interface{}) *bool {
 func ApiObject_Of(c constructs.IConstruct) ApiObject {
 	_init_.Initialize()
 
+	if err := validateApiObject_OfParameters(c); err != nil {
+		panic(err)
+	}
 	var returns ApiObject
 
 	_jsii_.StaticInvoke(

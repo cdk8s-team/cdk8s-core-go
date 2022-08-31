@@ -62,6 +62,9 @@ func (j *jsiiProxy_Helm) ReleaseName() *string {
 func NewHelm(scope constructs.Construct, id *string, props *HelmProps) Helm {
 	_init_.Initialize()
 
+	if err := validateNewHelmParameters(scope, id, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Helm{}
 
 	_jsii_.Create(
@@ -90,6 +93,9 @@ func NewHelm_Override(h Helm, scope constructs.Construct, id *string, props *Hel
 func Helm_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateHelm_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

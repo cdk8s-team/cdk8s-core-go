@@ -92,6 +92,9 @@ func (j *jsiiProxy_App) YamlOutputType() YamlOutputType {
 func NewApp(props *AppProps) App {
 	_init_.Initialize()
 
+	if err := validateNewAppParameters(props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_App{}
 
 	_jsii_.Create(
@@ -121,6 +124,9 @@ func NewApp_Override(a App, props *AppProps) {
 func App_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateApp_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

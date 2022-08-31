@@ -87,6 +87,9 @@ func (j *jsiiProxy_Chart) Node() constructs.Node {
 func NewChart(scope constructs.Construct, id *string, props *ChartProps) Chart {
 	_init_.Initialize()
 
+	if err := validateNewChartParameters(scope, id, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Chart{}
 
 	_jsii_.Create(
@@ -114,6 +117,9 @@ func NewChart_Override(c Chart, scope constructs.Construct, id *string, props *C
 func Chart_IsChart(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateChart_IsChartParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
@@ -133,6 +139,9 @@ func Chart_IsChart(x interface{}) *bool {
 func Chart_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateChart_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
@@ -149,6 +158,9 @@ func Chart_IsConstruct(x interface{}) *bool {
 func Chart_Of(c constructs.IConstruct) Chart {
 	_init_.Initialize()
 
+	if err := validateChart_OfParameters(c); err != nil {
+		panic(err)
+	}
 	var returns Chart
 
 	_jsii_.StaticInvoke(
@@ -175,6 +187,9 @@ func (c *jsiiProxy_Chart) AddDependency(dependencies ...constructs.IConstruct) {
 }
 
 func (c *jsiiProxy_Chart) GenerateObjectName(apiObject ApiObject) *string {
+	if err := c.validateGenerateObjectNameParameters(apiObject); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

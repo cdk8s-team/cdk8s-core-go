@@ -31,6 +31,9 @@ func (j *jsiiProxy_Cron) ExpressionString() *string {
 func NewCron(cronOptions *CronOptions) Cron {
 	_init_.Initialize()
 
+	if err := validateNewCronParameters(cronOptions); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Cron{}
 
 	_jsii_.Create(
@@ -136,6 +139,9 @@ func Cron_Monthly() Cron {
 func Cron_Schedule(options *CronOptions) Cron {
 	_init_.Initialize()
 
+	if err := validateCron_ScheduleParameters(options); err != nil {
+		panic(err)
+	}
 	var returns Cron
 
 	_jsii_.StaticInvoke(

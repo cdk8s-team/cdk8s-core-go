@@ -36,6 +36,9 @@ type jsiiProxy_Names struct {
 func Names_ToDnsLabel(scope constructs.Construct, options *NameOptions) *string {
 	_init_.Initialize()
 
+	if err := validateNames_ToDnsLabelParameters(scope, options); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.StaticInvoke(
@@ -69,6 +72,9 @@ func Names_ToDnsLabel(scope constructs.Construct, options *NameOptions) *string 
 func Names_ToLabelValue(scope constructs.Construct, options *NameOptions) *string {
 	_init_.Initialize()
 
+	if err := validateNames_ToLabelValueParameters(scope, options); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.StaticInvoke(

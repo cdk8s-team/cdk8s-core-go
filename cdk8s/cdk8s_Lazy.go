@@ -18,6 +18,9 @@ type jsiiProxy_Lazy struct {
 func Lazy_Any(producer IAnyProducer) interface{} {
 	_init_.Initialize()
 
+	if err := validateLazy_AnyParameters(producer); err != nil {
+		panic(err)
+	}
 	var returns interface{}
 
 	_jsii_.StaticInvoke(

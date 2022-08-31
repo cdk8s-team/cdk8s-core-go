@@ -52,6 +52,9 @@ func (j *jsiiProxy_Include) Node() constructs.Node {
 func NewInclude(scope constructs.Construct, id *string, props *IncludeProps) Include {
 	_init_.Initialize()
 
+	if err := validateNewIncludeParameters(scope, id, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Include{}
 
 	_jsii_.Create(
@@ -80,6 +83,9 @@ func NewInclude_Override(i Include, scope constructs.Construct, id *string, prop
 func Include_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateInclude_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
