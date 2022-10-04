@@ -4,6 +4,14 @@ package cdk8s
 
 type AppProps struct {
 	// The directory to output Kubernetes manifests.
+	//
+	// If you synthesize your application using `cdk8s synth`, you must
+	// also pass this value to the CLI using the `--output` option or
+	// the `output` property in the `cdk8s.yaml` configuration file.
+	// Otherwise, the CLI will not know about the output directory,
+	// and synthesis will fail.
+	//
+	// This property is intended for internal and testing use.
 	Outdir *string `field:"optional" json:"outdir" yaml:"outdir"`
 	// The file extension to use for rendered YAML files.
 	OutputFileExtension *string `field:"optional" json:"outputFileExtension" yaml:"outputFileExtension"`
