@@ -4,5 +4,5 @@ go 1.18
 
 require (
 	github.com/aws/jsii-runtime-go v1.72.0
-	github.com/aws/constructs-go/constructs/v3 v3.4.191
+	github.com/aws/constructs-go/constructs/v3 v3.4.192
 )
