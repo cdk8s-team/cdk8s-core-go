@@ -27,7 +27,7 @@ type App interface {
 	// Synthesizes the app into a YAML string.
 	//
 	// Returns: A string with all YAML objects across all charts in this app.
-	SynthYaml() interface{}
+	SynthYaml() *string
 	// Returns a string representation of this construct.
 	ToString() *string
 }
@@ -147,8 +147,8 @@ func (a *jsiiProxy_App) Synth() {
 	)
 }
 
-func (a *jsiiProxy_App) SynthYaml() interface{} {
-	var returns interface{}
+func (a *jsiiProxy_App) SynthYaml() *string {
+	var returns *string
 
 	_jsii_.Invoke(
 		a,
