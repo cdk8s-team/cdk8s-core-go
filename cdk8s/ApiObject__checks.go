@@ -19,6 +19,14 @@ func (a *jsiiProxy_ApiObject) validateOnSynthesizeParameters(session constructs.
 	return nil
 }
 
+func validateApiObject_IsApiObjectParameters(o interface{}) error {
+	if o == nil {
+		return fmt.Errorf("parameter o is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateApiObject_OfParameters(c constructs.IConstruct) error {
 	if c == nil {
 		return fmt.Errorf("parameter c is required, but nil was provided")

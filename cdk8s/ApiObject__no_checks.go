@@ -9,6 +9,10 @@ func (a *jsiiProxy_ApiObject) validateOnSynthesizeParameters(session constructs.
 	return nil
 }
 
+func validateApiObject_IsApiObjectParameters(o interface{}) error {
+	return nil
+}
+
 func validateApiObject_OfParameters(c constructs.IConstruct) error {
 	return nil
 }

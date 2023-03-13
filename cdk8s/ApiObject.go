@@ -165,6 +165,27 @@ func NewApiObject_Override(a ApiObject, scope constructs.Construct, id *string, 
 	)
 }
 
+// Return whether the given object is an `ApiObject`.
+//
+// We do attribute detection since we can't reliably use 'instanceof'.
+func ApiObject_IsApiObject(o interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateApiObject_IsApiObjectParameters(o); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"cdk8s.ApiObject",
+		"isApiObject",
+		[]interface{}{o},
+		&returns,
+	)
+
+	return returns
+}
+
 // Returns the `ApiObject` named `Resource` which is a child of the given construct.
 //
 // If `c` is an `ApiObject`, it is returned directly. Throws an
