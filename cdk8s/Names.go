@@ -19,13 +19,13 @@ type jsiiProxy_Names struct {
 // Generates a unique and stable name compatible DNS_LABEL from RFC-1123 from a path.
 //
 // The generated name will:
-//   - contain at most 63 characters
-//   - contain only lowercase alphanumeric characters or ‘-’
-//   - start with an alphanumeric character
-//   - end with an alphanumeric character
+//  - contain at most 63 characters
+//  - contain only lowercase alphanumeric characters or ‘-’
+//  - start with an alphanumeric character
+//  - end with an alphanumeric character
 //
 // The generated name will have the form:
-//   <comp0>-<comp1>-..-<compN>-<short-hash>
+//  <comp0>-<comp1>-..-<compN>-<short-hash>
 //
 // Where <comp> are the path components (assuming they are is separated by
 // "/").
@@ -61,7 +61,7 @@ func Names_ToDnsLabel(scope constructs.Construct, options *NameOptions) *string 
 // (-), underscores (_), dots (.), and alphanumerics between.
 //
 // The generated name will have the form:
-//   <comp0><delim><comp1><delim>..<delim><compN><delim><short-hash>
+//  <comp0><delim><comp1><delim>..<delim><compN><delim><short-hash>
 //
 // Where <comp> are the path components (assuming they are is separated by
 // "/").
