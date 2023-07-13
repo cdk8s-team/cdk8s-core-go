@@ -23,7 +23,7 @@ type DependencyGraph interface {
 	// Note that this vertex will always have `null` as its `.value` since it is an artifical root
 	// that binds all the connected spaces of the graph.
 	Root() DependencyVertex
-	// See: Vertex.topology()
+	// See: Vertex.topology ()
 	//
 	Topology() *[]constructs.IConstruct
 }
