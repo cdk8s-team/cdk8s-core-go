@@ -12,18 +12,26 @@ type HelmProps struct {
 	//
 	Chart *string `field:"required" json:"chart" yaml:"chart"`
 	// The local helm executable to use in order to create the manifest the chart.
+	// Default: "helm".
+	//
 	HelmExecutable *string `field:"optional" json:"helmExecutable" yaml:"helmExecutable"`
 	// Additional flags to add to the `helm` execution.
+	// Default: [].
+	//
 	HelmFlags *[]*string `field:"optional" json:"helmFlags" yaml:"helmFlags"`
 	// Scope all resources in to a given namespace.
 	Namespace *string `field:"optional" json:"namespace" yaml:"namespace"`
 	// The release name.
 	// See: https://helm.sh/docs/intro/using_helm/#three-big-concepts
 	//
+	// Default: - if unspecified, a name will be allocated based on the construct path.
+	//
 	ReleaseName *string `field:"optional" json:"releaseName" yaml:"releaseName"`
 	// Chart repository url where to locate the requested chart.
 	Repo *string `field:"optional" json:"repo" yaml:"repo"`
 	// Values to pass to the chart.
+	// Default: - If no values are specified, chart will use the defaults.
+	//
 	Values *map[string]interface{} `field:"optional" json:"values" yaml:"values"`
 	// Version constraint for the chart version to use.
 	//
