@@ -25,6 +25,9 @@ type OwnerReference struct {
 	// Defaults to false. To set this field, a user needs "delete"
 	// permission of the owner, otherwise 422 (Unprocessable Entity) will be
 	// returned.
+	// Default: false. To set this field, a user needs "delete" permission of the
+	// owner, otherwise 422 (Unprocessable Entity) will be returned.
+	//
 	BlockOwnerDeletion *bool `field:"optional" json:"blockOwnerDeletion" yaml:"blockOwnerDeletion"`
 	// If true, this reference points to the managing controller.
 	Controller *bool `field:"optional" json:"controller" yaml:"controller"`

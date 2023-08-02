@@ -16,8 +16,12 @@ type App interface {
 	// The output directory into which manifests will be synthesized.
 	Outdir() *string
 	// The file extension to use for rendered YAML files.
+	// Default: .k8s.yaml
+	//
 	OutputFileExtension() *string
 	// How to divide the YAML output into files.
+	// Default: YamlOutputType.FILE_PER_CHART
+	//
 	YamlOutputType() YamlOutputType
 	// Perform final modifications before synthesis.
 	//
