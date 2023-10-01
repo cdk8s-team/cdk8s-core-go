@@ -3,8 +3,6 @@ package cdk8s
 
 // Options for `ApiObjectMetadataDefinition`.
 type ApiObjectMetadataDefinitionOptions struct {
-	// Additional metadata attributes.
-	AdditionalAttributes *map[string]interface{} `field:"optional" json:"additionalAttributes" yaml:"additionalAttributes"`
 	// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata.
 	//
 	// They are not queryable and should be
