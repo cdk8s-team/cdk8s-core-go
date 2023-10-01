@@ -19,6 +19,11 @@ type App interface {
 	// Default: .k8s.yaml
 	//
 	OutputFileExtension() *string
+	// Resolvers used by this app.
+	//
+	// This includes both custom resolvers
+	// passed by the `resolvers` property, as well as built-in resolvers.
+	Resolvers() *[]IResolver
 	// How to divide the YAML output into files.
 	// Default: YamlOutputType.FILE_PER_CHART
 	//
@@ -91,6 +96,16 @@ func (j *jsiiProxy_App) OutputFileExtension() *string {
 	return returns
 }
 
+func (j *jsiiProxy_App) Resolvers() *[]IResolver {
+	var returns *[]IResolver
+	_jsii_.Get(
+		j,
+		"resolvers",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_App) YamlOutputType() YamlOutputType {
 	var returns YamlOutputType
 	_jsii_.Get(
@@ -129,6 +144,24 @@ func NewApp_Override(a App, props *AppProps) {
 		[]interface{}{props},
 		a,
 	)
+}
+
+func App_Of(c constructs.IConstruct) App {
+	_init_.Initialize()
+
+	if err := validateApp_OfParameters(c); err != nil {
+		panic(err)
+	}
+	var returns App
+
+	_jsii_.StaticInvoke(
+		"cdk8s.App",
+		"of",
+		[]interface{}{c},
+		&returns,
+	)
+
+	return returns
 }
 
 func (a *jsiiProxy_App) OnPrepare() {

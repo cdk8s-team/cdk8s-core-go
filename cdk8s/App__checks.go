@@ -18,6 +18,14 @@ func (a *jsiiProxy_App) validateOnSynthesizeParameters(session constructs.ISynth
 	return nil
 }
 
+func validateApp_OfParameters(c constructs.IConstruct) error {
+	if c == nil {
+		return fmt.Errorf("parameter c is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewAppParameters(props *AppProps) error {
 	if err := _jsii_.ValidateStruct(props, func() string { return "parameter props" }); err != nil {
 		return err

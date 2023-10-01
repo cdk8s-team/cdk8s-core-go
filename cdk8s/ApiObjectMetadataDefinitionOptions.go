@@ -1,8 +1,8 @@
 package cdk8s
 
 
-// Metadata associated with this object.
-type ApiObjectMetadata struct {
+// Options for `ApiObjectMetadataDefinition`.
+type ApiObjectMetadataDefinitionOptions struct {
 	// Additional metadata attributes.
 	AdditionalAttributes *map[string]interface{} `field:"optional" json:"additionalAttributes" yaml:"additionalAttributes"`
 	// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata.
@@ -85,5 +85,7 @@ type ApiObjectMetadata struct {
 	// Default: - automatically set by Kubernetes.
 	//
 	OwnerReferences *[]*OwnerReference `field:"optional" json:"ownerReferences" yaml:"ownerReferences"`
+	// Which ApiObject instance is the metadata attached to.
+	ApiObject ApiObject `field:"required" json:"apiObject" yaml:"apiObject"`
 }
 

@@ -55,6 +55,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"cdk8s.ApiObjectMetadataDefinitionOptions",
+		reflect.TypeOf((*ApiObjectMetadataDefinitionOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"cdk8s.ApiObjectProps",
 		reflect.TypeOf((*ApiObjectProps)(nil)).Elem(),
 	)
@@ -68,6 +72,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "onValidate", GoMethod: "OnValidate"},
 			_jsii_.MemberProperty{JsiiProperty: "outdir", GoGetter: "Outdir"},
 			_jsii_.MemberProperty{JsiiProperty: "outputFileExtension", GoGetter: "OutputFileExtension"},
+			_jsii_.MemberProperty{JsiiProperty: "resolvers", GoGetter: "Resolvers"},
 			_jsii_.MemberMethod{JsiiMethod: "synth", GoMethod: "Synth"},
 			_jsii_.MemberMethod{JsiiMethod: "synthYaml", GoMethod: "SynthYaml"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
@@ -198,6 +203,28 @@ func init() {
 			return &jsiiProxy_IAnyProducer{}
 		},
 	)
+	_jsii_.RegisterInterface(
+		"cdk8s.IResolver",
+		reflect.TypeOf((*IResolver)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "resolve", GoMethod: "Resolve"},
+		},
+		func() interface{} {
+			return &jsiiProxy_IResolver{}
+		},
+	)
+	_jsii_.RegisterClass(
+		"cdk8s.ImplicitTokenResolver",
+		reflect.TypeOf((*ImplicitTokenResolver)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "resolve", GoMethod: "Resolve"},
+		},
+		func() interface{} {
+			j := jsiiProxy_ImplicitTokenResolver{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_IResolver)
+			return &j
+		},
+	)
 	_jsii_.RegisterClass(
 		"cdk8s.Include",
 		reflect.TypeOf((*Include)(nil)).Elem(),
@@ -236,6 +263,18 @@ func init() {
 			return &jsiiProxy_Lazy{}
 		},
 	)
+	_jsii_.RegisterClass(
+		"cdk8s.LazyResolver",
+		reflect.TypeOf((*LazyResolver)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "resolve", GoMethod: "Resolve"},
+		},
+		func() interface{} {
+			j := jsiiProxy_LazyResolver{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_IResolver)
+			return &j
+		},
+	)
 	_jsii_.RegisterStruct(
 		"cdk8s.NameOptions",
 		reflect.TypeOf((*NameOptions)(nil)).Elem(),
@@ -251,6 +290,21 @@ func init() {
 	_jsii_.RegisterStruct(
 		"cdk8s.OwnerReference",
 		reflect.TypeOf((*OwnerReference)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"cdk8s.ResolutionContext",
+		reflect.TypeOf((*ResolutionContext)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "key", GoGetter: "Key"},
+			_jsii_.MemberProperty{JsiiProperty: "obj", GoGetter: "Obj"},
+			_jsii_.MemberProperty{JsiiProperty: "replaced", GoGetter: "Replaced"},
+			_jsii_.MemberProperty{JsiiProperty: "replacedValue", GoGetter: "ReplacedValue"},
+			_jsii_.MemberMethod{JsiiMethod: "replaceValue", GoMethod: "ReplaceValue"},
+			_jsii_.MemberProperty{JsiiProperty: "value", GoGetter: "Value"},
+		},
+		func() interface{} {
+			return &jsiiProxy_ResolutionContext{}
+		},
 	)
 	_jsii_.RegisterClass(
 		"cdk8s.Size",

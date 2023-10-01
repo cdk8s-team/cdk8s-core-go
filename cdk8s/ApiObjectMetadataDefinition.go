@@ -58,7 +58,7 @@ func (j *jsiiProxy_ApiObjectMetadataDefinition) Namespace() *string {
 }
 
 
-func NewApiObjectMetadataDefinition(options *ApiObjectMetadata) ApiObjectMetadataDefinition {
+func NewApiObjectMetadataDefinition(options *ApiObjectMetadataDefinitionOptions) ApiObjectMetadataDefinition {
 	_init_.Initialize()
 
 	if err := validateNewApiObjectMetadataDefinitionParameters(options); err != nil {
@@ -75,7 +75,7 @@ func NewApiObjectMetadataDefinition(options *ApiObjectMetadata) ApiObjectMetadat
 	return &j
 }
 
-func NewApiObjectMetadataDefinition_Override(a ApiObjectMetadataDefinition, options *ApiObjectMetadata) {
+func NewApiObjectMetadataDefinition_Override(a ApiObjectMetadataDefinition, options *ApiObjectMetadataDefinitionOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(

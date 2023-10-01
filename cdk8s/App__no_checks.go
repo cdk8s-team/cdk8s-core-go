@@ -8,6 +8,10 @@ func (a *jsiiProxy_App) validateOnSynthesizeParameters(session constructs.ISynth
 	return nil
 }
 
+func validateApp_OfParameters(c constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewAppParameters(props *AppProps) error {
 	return nil
 }
