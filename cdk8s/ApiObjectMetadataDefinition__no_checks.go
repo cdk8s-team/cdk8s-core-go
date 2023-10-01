@@ -24,7 +24,7 @@ func (a *jsiiProxy_ApiObjectMetadataDefinition) validateGetLabelParameters(key *
 	return nil
 }
 
-func validateNewApiObjectMetadataDefinitionParameters(options *ApiObjectMetadata) error {
+func validateNewApiObjectMetadataDefinitionParameters(options *ApiObjectMetadataDefinitionOptions) error {
 	return nil
 }
 

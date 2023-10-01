@@ -6,11 +6,21 @@ import (
 	"fmt"
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 func validateApp_IsConstructParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateApp_OfParameters(c constructs.IConstruct) error {
+	if c == nil {
+		return fmt.Errorf("parameter c is required, but nil was provided")
 	}
 
 	return nil

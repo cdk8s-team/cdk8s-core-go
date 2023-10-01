@@ -8,6 +8,10 @@ func validateApp_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
+func validateApp_OfParameters(c constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewAppParameters(props *AppProps) error {
 	return nil
 }

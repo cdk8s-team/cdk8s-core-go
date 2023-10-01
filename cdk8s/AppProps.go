@@ -22,6 +22,16 @@ type AppProps struct {
 	// Default: false.
 	//
 	RecordConstructMetadata *bool `field:"optional" json:"recordConstructMetadata" yaml:"recordConstructMetadata"`
+	// A list of resolvers that can be used to replace property values before they are written to the manifest file.
+	//
+	// When multiple resolvers are passed,
+	// they are invoked by order in the list, and only the first one that applies
+	// (e.g calls `context.replaceValue`) is invoked.
+	// See: https://cdk8s.io/docs/latest/basics/app/#resolvers
+	//
+	// Default: - no resolvers.
+	//
+	Resolvers *[]IResolver `field:"optional" json:"resolvers" yaml:"resolvers"`
 	// How to divide the YAML output into files.
 	// Default: YamlOutputType.FILE_PER_CHART
 	//
