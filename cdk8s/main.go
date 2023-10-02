@@ -287,6 +287,18 @@ func init() {
 			return &jsiiProxy_Names{}
 		},
 	)
+	_jsii_.RegisterClass(
+		"cdk8s.NumberStringUnionResolver",
+		reflect.TypeOf((*NumberStringUnionResolver)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "resolve", GoMethod: "Resolve"},
+		},
+		func() interface{} {
+			j := jsiiProxy_NumberStringUnionResolver{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_IResolver)
+			return &j
+		},
+	)
 	_jsii_.RegisterStruct(
 		"cdk8s.OwnerReference",
 		reflect.TypeOf((*OwnerReference)(nil)).Elem(),
