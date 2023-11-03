@@ -89,6 +89,7 @@ func init() {
 		reflect.TypeOf((*Chart)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDependency", GoMethod: "AddDependency"},
+			_jsii_.MemberProperty{JsiiProperty: "apiObjects", GoGetter: "ApiObjects"},
 			_jsii_.MemberMethod{JsiiMethod: "generateObjectName", GoMethod: "GenerateObjectName"},
 			_jsii_.MemberProperty{JsiiProperty: "labels", GoGetter: "Labels"},
 			_jsii_.MemberProperty{JsiiProperty: "namespace", GoGetter: "Namespace"},

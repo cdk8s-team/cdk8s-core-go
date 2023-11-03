@@ -10,6 +10,8 @@ import (
 
 type Chart interface {
 	constructs.Construct
+	// Returns all the included API objects.
+	ApiObjects() *[]ApiObject
 	// Labels applied to all resources in this chart.
 	//
 	// This is an immutable copy.
@@ -50,6 +52,16 @@ type Chart interface {
 // The jsii proxy struct for Chart
 type jsiiProxy_Chart struct {
 	internal.Type__constructsConstruct
+}
+
+func (j *jsiiProxy_Chart) ApiObjects() *[]ApiObject {
+	var returns *[]ApiObject
+	_jsii_.Get(
+		j,
+		"apiObjects",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_Chart) Labels() *map[string]*string {
