@@ -12,6 +12,8 @@ import (
 //
 // When the amount is passed as a token, unit conversion is not possible.
 type Size interface {
+	// Returns amount with abbreviated storage unit.
+	AsString() *string
 	// Return this storage as a total number of gibibytes.
 	ToGibibytes(opts *SizeConversionOptions) *float64
 	// Return this storage as a total number of kibibytes.
@@ -128,6 +130,19 @@ func Size_Tebibytes(amount *float64) Size {
 		"cdk8s.Size",
 		"tebibytes",
 		[]interface{}{amount},
+		&returns,
+	)
+
+	return returns
+}
+
+func (s *jsiiProxy_Size) AsString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		s,
+		"asString",
+		nil, // no parameters
 		&returns,
 	)
 
